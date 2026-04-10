@@ -1,7 +1,7 @@
 import frappe
 
 def run():
-    print("Starting database sync and cleanup...")
+    print("Starting hardened database sync and cleanup...")
     
     # List of all DocTypes in the app
     doctypes = [
@@ -14,20 +14,27 @@ def run():
     
     for dt in doctypes:
         if frappe.db.exists("DocType", dt):
-            print(f"Aligning {dt}...")
-            # Force update module and custom flag
+            print(f"Aligning DocType: {dt}...")
+            # Force update module and custom flag using DB set_value (safest)
             frappe.db.set_value("DocType", dt, {
                 "module": "Automobile Dealership",
                 "custom": 0
             })
-            
             # Clear compiled metadata
             frappe.clear_cache(doctype=dt)
     
-    # Cleanup corrupted workspaces
-    print("Cleaning up Workspace entries...")
-    frappe.db.sql("DELETE FROM `tabWorkspace` WHERE module = 'Automobile Dealership'")
-    frappe.db.sql("DELETE FROM `tabWorkspace` WHERE label = 'Automobile Dealership'")
+    # Cleanup corrupted workspaces using the ORM (schema-agnostic)
+    print("Cleaning up Workspace entries via ORM...")
+    workspaces = frappe.get_all("Workspace", filters={"module": "Automobile Dealership"})
+    for ws in workspaces:
+        print(f"Deleting workspace: {ws.name}")
+        frappe.delete_doc("Workspace", ws.name, ignore_permissions=True, force=True)
+    
+    # Also cleanup by label just in case
+    workspaces_by_label = frappe.get_all("Workspace", filters={"label": "Automobile Dealership"})
+    for ws in workspaces_by_label:
+        print(f"Deleting workspace by label: {ws.name}")
+        frappe.delete_doc("Workspace", ws.name, ignore_permissions=True, force=True)
     
     frappe.db.commit()
     frappe.clear_cache()
