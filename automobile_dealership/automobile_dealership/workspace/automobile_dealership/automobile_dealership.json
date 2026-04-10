@@ -31,5 +31,6 @@
     {"label": "Sales Incentive Rule", "type": "Link", "link_type": "DocType", "link_to": "Sales Incentive Rule", "on_section": "Links"},
     {"label": "OEM Monthly Report", "type": "Link", "link_type": "Report", "link_to": "OEM Monthly Report", "on_section": "Links"}
   ],
-  "charts": []
+  "charts": [],
+  "shortcuts": []
 }
