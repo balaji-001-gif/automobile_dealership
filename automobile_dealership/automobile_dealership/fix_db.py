@@ -26,7 +26,7 @@ def run():
     
     # Cleanup corrupted workspaces
     print("Cleaning up Workspace entries...")
-    frappe.db.sql("DELETE FROM `tabWorkspace` WHERE module = 'Automobile Dealership' AND is_standard = 1")
+    frappe.db.sql("DELETE FROM `tabWorkspace` WHERE module = 'Automobile Dealership'")
     frappe.db.sql("DELETE FROM `tabWorkspace` WHERE label = 'Automobile Dealership'")
     
     frappe.db.commit()
