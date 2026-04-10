@@ -29,4 +29,4 @@ class LoyaltyAccount(Document):
         })
         self.total_points = (self.total_points or 0) - points
         self.save(ignore_permissions=True)
-        return points * (frappe.db.get_single_value("Auto Dealer Settings", "loyalty_point_value") or 1)
+        return points * (frappe.db.get_single_value("Automobile Dealership Settings", "loyalty_point_value") or 1)

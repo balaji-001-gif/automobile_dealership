@@ -35,7 +35,7 @@ TEMPLATES = {
 }
 
 def send_message(phone, template, params):
-    settings = frappe.get_single("Auto Dealer Settings")
+    settings = frappe.get_single("Automobile Dealership Settings")
 
     if not settings.whatsapp_enabled:
         frappe.logger().info(f"WhatsApp disabled. Would send {template} to {phone}")

@@ -23,7 +23,7 @@ class LoanApplication(Document):
 
     def submit_to_bank_portal(self):
         # Integrate with bank DSA API
-        from auto_dealer.api.loan_dsa import submit_application
+        from automobile_dealership.api.loan_dsa import submit_application
         result = submit_application(self)
         if result.get("status") == "success":
             self.db_set("bank_reference_number", result.get("ref_no"))
@@ -36,7 +36,7 @@ def get_eligible_banks(vehicle_name, customer_name):
     vehicle = frappe.get_doc("Vehicle", vehicle_name)
     customer = frappe.get_doc("Customer", customer_name)
 
-    settings = frappe.get_single("Auto Dealer Settings")
+    settings = frappe.get_single("Automobile Dealership Settings")
     banks = frappe.get_all("Empanelled Bank", fields=["bank_name", "max_ltv", "min_rate"])
 
     eligible = []

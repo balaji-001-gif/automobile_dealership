@@ -40,13 +40,13 @@ def calculate_consultant_incentive(employee, month, year):
 
         if sale.finance_done:
             finance_bonus = frappe.db.get_single_value(
-                "Auto Dealer Settings", "finance_crosssell_bonus"
+                "Automobile Dealership Settings", "finance_crosssell_bonus"
             ) or 500
             total_incentive += finance_bonus
 
         if sale.insurance_done:
             insurance_bonus = frappe.db.get_single_value(
-                "Auto Dealer Settings", "insurance_crosssell_bonus"
+                "Automobile Dealership Settings", "insurance_crosssell_bonus"
             ) or 300
             total_incentive += insurance_bonus
 

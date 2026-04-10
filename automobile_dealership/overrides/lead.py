@@ -30,7 +30,7 @@ class CustomLead(Lead):
 
     def send_whatsapp_acknowledgement(self):
         if self.mobile_no:
-            from auto_dealer.api.whatsapp import send_message
+            from automobile_dealership.api.whatsapp import send_message
             send_message(
                 phone=self.mobile_no,
                 template="lead_acknowledgement",
@@ -38,7 +38,7 @@ class CustomLead(Lead):
                     "customer_name": self.lead_name,
                     "model": self.get("custom_interested_model", ""),
                     "dealership_name": frappe.db.get_single_value(
-                        "Auto Dealer Settings", "dealership_name"
+                        "Automobile Dealership Settings", "dealership_name"
                     ),
                 },
             )

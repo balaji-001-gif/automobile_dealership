@@ -3,10 +3,10 @@ from setuptools import setup, find_packages
 with open("requirements.txt") as f:
     install_requires = f.read().strip().split("\n")
 
-from auto_dealer import __version__ as version
+from automobile_dealership import __version__ as version
 
 setup(
-    name="auto_dealer",
+    name="automobile_dealership",
     version=version,
     description="Automobile Dealership Management",
     author="Your Company",

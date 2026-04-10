@@ -3,8 +3,8 @@ import os
 base_dir = "/Users/balajik/auto -dealer"
 
 files = {
-    "auto_dealer/hooks.py": """app_name = "auto_dealer"
-app_title = "Auto Dealer"
+    "automobile_dealership/hooks.py": """app_name = "automobile_dealership"
+app_title = "Automobile Dealership"
 app_publisher = "Your Company"
 app_description = "Automobile Dealership Management"
 app_version = "1.0.0"
@@ -15,23 +15,23 @@ required_apps = ["frappe", "erpnext"]
 
 # DocType overrides
 override_doctype_class = {
-    "Sales Order": "auto_dealer.overrides.sales_order.CustomSalesOrder",
-    "Customer": "auto_dealer.overrides.customer.CustomCustomer",
+    "Sales Order": "automobile_dealership.overrides.sales_order.CustomSalesOrder",
+    "Customer": "automobile_dealership.overrides.customer.CustomCustomer",
 }
 
 # Scheduled tasks
 scheduler_events = {
     "daily": [
-        "auto_dealer.tasks.send_service_reminders",
-        "auto_dealer.tasks.check_insurance_renewals",
-        "auto_dealer.tasks.check_amc_renewals",
-        "auto_dealer.tasks.oem_target_sync",
+        "automobile_dealership.tasks.send_service_reminders",
+        "automobile_dealership.tasks.check_insurance_renewals",
+        "automobile_dealership.tasks.check_amc_renewals",
+        "automobile_dealership.tasks.oem_target_sync",
     ],
     "weekly": [
-        "auto_dealer.tasks.slow_moving_inventory_alert",
+        "automobile_dealership.tasks.slow_moving_inventory_alert",
     ],
     "monthly": [
-        "auto_dealer.tasks.generate_oem_monthly_report",
+        "automobile_dealership.tasks.generate_oem_monthly_report",
     ],
 }
 
@@ -39,17 +39,17 @@ scheduler_events = {
 doc_events = {
     "Vehicle Sale": {
         "on_submit": [
-            "auto_dealer.events.vehicle_sale.on_submit",
-            "auto_dealer.events.vehicle_sale.trigger_whatsapp_confirmation",
+            "automobile_dealership.events.vehicle_sale.on_submit",
+            "automobile_dealership.events.vehicle_sale.trigger_whatsapp_confirmation",
         ],
-        "on_cancel": "auto_dealer.events.vehicle_sale.on_cancel",
+        "on_cancel": "automobile_dealership.events.vehicle_sale.on_cancel",
     },
     "Service Job Card": {
-        "on_submit": "auto_dealer.events.service_job_card.on_submit",
-        "on_update": "auto_dealer.events.service_job_card.update_job_status",
+        "on_submit": "automobile_dealership.events.service_job_card.on_submit",
+        "on_update": "automobile_dealership.events.service_job_card.update_job_status",
     },
     "Customer": {
-        "after_insert": "auto_dealer.events.customer.create_crm_profile",
+        "after_insert": "automobile_dealership.events.customer.create_crm_profile",
     },
 }
 
@@ -69,13 +69,13 @@ fixtures = [
 
 # Website context
 website_context = {
-    "favicon": "/assets/auto_dealer/images/favicon.ico",
+    "favicon": "/assets/automobile_dealership/images/favicon.ico",
 }
 """,
-    "auto_dealer/modules.txt": """Auto Dealer\n""",
-    "auto_dealer/auto_dealer/doctype/vehicle/vehicle.json": """{
+    "automobile_dealership/modules.txt": """Automobile Dealership\n""",
+    "automobile_dealership/automobile_dealership/doctype/vehicle/vehicle.json": """{
   "name": "Vehicle",
-  "module": "Auto Dealer",
+  "module": "Automobile Dealership",
   "doctype": "DocType",
   "is_submittable": 0,
   "track_changes": 1,
@@ -121,7 +121,7 @@ website_context = {
   ]
 }
 """,
-    "auto_dealer/auto_dealer/doctype/vehicle/vehicle.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/vehicle/vehicle.py": """import frappe
 from frappe.model.document import Document
 from frappe.utils import date_diff, today
 
@@ -168,7 +168,7 @@ class Vehicle(Document):
     def get_accessories_total(self):
         return sum([row.amount for row in self.get("features", [])])
 """,
-    "auto_dealer/auto_dealer/doctype/vehicle_sale/vehicle_sale.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/vehicle_sale/vehicle_sale.py": """import frappe
 from frappe.model.document import Document
 from frappe.utils import nowdate
 
@@ -249,7 +249,7 @@ class VehicleSale(Document):
             "scheduled_date": self.delivery_date,
         }).insert(ignore_permissions=True)
 """,
-    "auto_dealer/auto_dealer/doctype/vehicle_inventory_log/vehicle_inventory_log.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/vehicle_inventory_log/vehicle_inventory_log.py": """import frappe
 from frappe.model.document import Document
 
 class VehicleInventoryLog(Document):
@@ -276,13 +276,13 @@ def get_slow_moving_vehicles(days_threshold=60):
         ORDER BY v.days_in_stock DESC
     ''', {"days": days_threshold}, as_dict=True)
 """,
-    "auto_dealer/auto_dealer/api/marketplace_sync.py": """import frappe
+    "automobile_dealership/automobile_dealership/api/marketplace_sync.py": """import frappe
 import requests
 
 def sync_to_cardekho(vehicle_name):
     # Sync vehicle listing to CarDekho partner portal
     vehicle = frappe.get_doc("Vehicle", vehicle_name)
-    settings = frappe.get_single("Auto Dealer Settings")
+    settings = frappe.get_single("Automobile Dealership Settings")
 
     payload = {
         "dealer_id": settings.cardekho_dealer_id,
@@ -313,7 +313,7 @@ def sync_to_cardekho(vehicle_name):
         frappe.log_error(str(e), "CarDekho Sync Error")
         return {"status": "error", "message": str(e)}
 """,
-    "auto_dealer/auto_dealer/patches/add_vehicle_parts_fields.py": """import frappe
+    "automobile_dealership/automobile_dealership/patches/add_vehicle_parts_fields.py": """import frappe
 
 def execute():
     # Add custom fields to Item doctype for auto parts
@@ -345,7 +345,7 @@ def execute():
     from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
     create_custom_fields(custom_fields)
 """,
-    "auto_dealer/auto_dealer/overrides/lead.py": """import frappe
+    "automobile_dealership/automobile_dealership/overrides/lead.py": """import frappe
 from erpnext.crm.doctype.lead.lead import Lead
 
 class CustomLead(Lead):
@@ -377,7 +377,7 @@ class CustomLead(Lead):
 
     def send_whatsapp_acknowledgement(self):
         if self.mobile_no:
-            from auto_dealer.api.whatsapp import send_message
+            from automobile_dealership.api.whatsapp import send_message
             send_message(
                 phone=self.mobile_no,
                 template="lead_acknowledgement",
@@ -385,12 +385,12 @@ class CustomLead(Lead):
                     "customer_name": self.lead_name,
                     "model": self.get("custom_interested_model", ""),
                     "dealership_name": frappe.db.get_single_value(
-                        "Auto Dealer Settings", "dealership_name"
+                        "Automobile Dealership Settings", "dealership_name"
                     ),
                 },
             )
 """,
-    "auto_dealer/auto_dealer/doctype/test_drive/test_drive.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/test_drive/test_drive.py": """import frappe
 from frappe.model.document import Document
 from frappe.utils import now_datetime, get_datetime
 
@@ -431,7 +431,7 @@ class TestDrive(Document):
         frappe.db.set_value("Vehicle", self.vehicle, "status", "Demo")
 
     def send_confirmation(self):
-        from auto_dealer.api.whatsapp import send_message
+        from automobile_dealership.api.whatsapp import send_message
         if self.customer_mobile:
             send_message(
                 phone=self.customer_mobile,
@@ -460,7 +460,7 @@ class TestDrive(Document):
             "assigned_to": self.sales_consultant,
         }).insert(ignore_permissions=True)
 """,
-    "auto_dealer/auto_dealer/doctype/loan_application/loan_application.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/loan_application/loan_application.py": """import frappe
 from frappe.model.document import Document
 
 class LoanApplication(Document):
@@ -485,7 +485,7 @@ class LoanApplication(Document):
 
     def submit_to_bank_portal(self):
         # Integrate with bank DSA API
-        from auto_dealer.api.loan_dsa import submit_application
+        from automobile_dealership.api.loan_dsa import submit_application
         result = submit_application(self)
         if result.get("status") == "success":
             self.db_set("bank_reference_number", result.get("ref_no"))
@@ -498,7 +498,7 @@ def get_eligible_banks(vehicle_name, customer_name):
     vehicle = frappe.get_doc("Vehicle", vehicle_name)
     customer = frappe.get_doc("Customer", customer_name)
 
-    settings = frappe.get_single("Auto Dealer Settings")
+    settings = frappe.get_single("Automobile Dealership Settings")
     banks = frappe.get_all("Empanelled Bank", fields=["bank_name", "max_ltv", "min_rate"])
 
     eligible = []
@@ -511,7 +511,7 @@ def get_eligible_banks(vehicle_name, customer_name):
         })
     return eligible
 """,
-    "auto_dealer/auto_dealer/doctype/insurance_policy/insurance_policy.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/insurance_policy/insurance_policy.py": """import frappe
 from frappe.model.document import Document
 from frappe.utils import add_years, today, date_diff
 
@@ -535,10 +535,10 @@ class InsurancePolicy(Document):
 
     @frappe.whitelist()
     def get_renewal_quote(self):
-        from auto_dealer.api.insurance import get_renewal_quote
+        from automobile_dealership.api.insurance import get_renewal_quote
         return get_renewal_quote(self.policy_number, self.insurer)
 """,
-    "auto_dealer/auto_dealer/setup/billing_setup.py": """import frappe
+    "automobile_dealership/automobile_dealership/setup/billing_setup.py": """import frappe
 
 def setup_gst_accounts(company):
     gst_accounts = [
@@ -578,7 +578,7 @@ def create_vehicle_sale_tax_template():
     })
     doc.insert()
 """,
-    "auto_dealer/auto_dealer/doctype/service_job_card/service_job_card.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/service_job_card/service_job_card.py": """import frappe
 from frappe.model.document import Document
 from frappe.utils import now_datetime, time_diff_in_hours
 
@@ -641,7 +641,7 @@ class ServiceJobCard(Document):
                 mr.insert(ignore_permissions=True)
 
     def notify_customer_job_started(self):
-        from auto_dealer.api.whatsapp import send_message
+        from automobile_dealership.api.whatsapp import send_message
         if self.customer_mobile:
             send_message(
                 phone=self.customer_mobile,
@@ -694,7 +694,7 @@ class ServiceJobCard(Document):
         return si.name
 
     def notify_customer_ready(self):
-        from auto_dealer.api.whatsapp import send_message
+        from automobile_dealership.api.whatsapp import send_message
         if self.customer_mobile:
             send_message(
                 phone=self.customer_mobile,
@@ -707,7 +707,7 @@ class ServiceJobCard(Document):
                 },
             )
 """,
-    "auto_dealer/auto_dealer/doctype/amc_contract/amc_contract.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/amc_contract/amc_contract.py": """import frappe
 from frappe.model.document import Document
 from frappe.utils import add_years, date_diff, today, add_days
 
@@ -744,7 +744,7 @@ def send_amc_renewal_reminders():
         fields=["name", "customer", "vehicle", "end_date", "customer_mobile"],
     )
     for contract in due_contracts:
-        from auto_dealer.api.whatsapp import send_message
+        from automobile_dealership.api.whatsapp import send_message
         if contract.customer_mobile:
             send_message(
                 phone=contract.customer_mobile,
@@ -755,7 +755,7 @@ def send_amc_renewal_reminders():
                 },
             )
 """,
-    "auto_dealer/auto_dealer/doctype/sales_incentive_rule/sales_incentive_rule.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/sales_incentive_rule/sales_incentive_rule.py": """import frappe
 from frappe.model.document import Document
 
 class SalesIncentiveRule(Document):
@@ -797,13 +797,13 @@ def calculate_consultant_incentive(employee, month, year):
 
         if sale.finance_done:
             finance_bonus = frappe.db.get_single_value(
-                "Auto Dealer Settings", "finance_crosssell_bonus"
+                "Automobile Dealership Settings", "finance_crosssell_bonus"
             ) or 500
             total_incentive += finance_bonus
 
         if sale.insurance_done:
             insurance_bonus = frappe.db.get_single_value(
-                "Auto Dealer Settings", "insurance_crosssell_bonus"
+                "Automobile Dealership Settings", "insurance_crosssell_bonus"
             ) or 300
             total_incentive += insurance_bonus
 
@@ -835,7 +835,7 @@ def get_vehicle_incentive(sale, rules):
             return rule.incentive_amount
     return 0
 """,
-    "auto_dealer/auto_dealer/api/attendance.py": """import frappe
+    "automobile_dealership/automobile_dealership/api/attendance.py": """import frappe
 from frappe.utils import today, now_datetime
 
 @frappe.whitelist()
@@ -856,7 +856,7 @@ def mark_technician_attendance(employee, status="Present"):
     att.submit()
     return att.name
 """,
-    "auto_dealer/auto_dealer/api/whatsapp.py": """import frappe
+    "automobile_dealership/automobile_dealership/api/whatsapp.py": """import frappe
 import requests
 
 TEMPLATES = {
@@ -893,7 +893,7 @@ TEMPLATES = {
 }
 
 def send_message(phone, template, params):
-    settings = frappe.get_single("Auto Dealer Settings")
+    settings = frappe.get_single("Automobile Dealership Settings")
 
     if not settings.whatsapp_enabled:
         frappe.logger().info(f"WhatsApp disabled. Would send {template} to {phone}")
@@ -953,7 +953,7 @@ def log_whatsapp_message(phone, template, status, error=None):
         "timestamp": frappe.utils.now_datetime(),
     }).insert(ignore_permissions=True)
 """,
-    "auto_dealer/auto_dealer/doctype/loyalty_account/loyalty_account.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/loyalty_account/loyalty_account.py": """import frappe
 from frappe.model.document import Document
 
 class LoyaltyAccount(Document):
@@ -984,9 +984,9 @@ class LoyaltyAccount(Document):
         })
         self.total_points = (self.total_points or 0) - points
         self.save(ignore_permissions=True)
-        return points * (frappe.db.get_single_value("Auto Dealer Settings", "loyalty_point_value") or 1)
+        return points * (frappe.db.get_single_value("Automobile Dealership Settings", "loyalty_point_value") or 1)
 """,
-    "auto_dealer/auto_dealer/page/dealer_dashboard/dealer_dashboard.py": """import frappe
+    "automobile_dealership/automobile_dealership/page/dealer_dashboard/dealer_dashboard.py": """import frappe
 
 @frappe.whitelist()
 def get_dashboard_data():
@@ -1087,7 +1087,7 @@ def get_oem_target_progress(month_start, month_end):
         "percent": round((achieved / target[0]) * 100, 1) if target[0] else 0,
     }
 """,
-    "auto_dealer/auto_dealer/report/oem_monthly_report/oem_monthly_report.py": """import frappe
+    "automobile_dealership/automobile_dealership/report/oem_monthly_report/oem_monthly_report.py": """import frappe
 
 def execute(filters=None):
     columns = get_columns()
@@ -1134,7 +1134,7 @@ def get_data(filters):
         ORDER BY units_sold DESC
     ''', as_dict=True)
 """,
-    "auto_dealer/auto_dealer/doctype/auto_dealer_settings/auto_dealer_settings.py": """import frappe
+    "automobile_dealership/automobile_dealership/doctype/automobile_dealership_settings/automobile_dealership_settings.py": """import frappe
 from frappe.model.document import Document
 
 class AutoDealerSettings(Document):
@@ -1145,7 +1145,7 @@ class AutoDealerSettings(Document):
         if self.whatsapp_enabled and not self.whatsapp_api_key:
             frappe.throw("WhatsApp API Key is required when WhatsApp is enabled.")
 """,
-    "auto_dealer/auto_dealer/api/loan_dsa.py": """import frappe
+    "automobile_dealership/automobile_dealership/api/loan_dsa.py": """import frappe
 import requests
 
 def submit_application(loan_doc):
@@ -1177,7 +1177,7 @@ def submit_application(loan_doc):
         frappe.log_error(str(e), "Loan DSA API Error")
         return {"status": "error", "message": str(e)}
 """,
-    "auto_dealer/auto_dealer/setup/roles.py": """import frappe
+    "automobile_dealership/automobile_dealership/setup/roles.py": """import frappe
 
 def create_roles():
     roles = [
@@ -1193,7 +1193,7 @@ def create_roles():
         if not frappe.db.exists("Role", role["role_name"]):
             frappe.get_doc({"doctype": "Role", **role}).insert()
 """,
-    "auto_dealer/auto_dealer/fixtures/workflow_vehicle_sale.json": """{
+    "automobile_dealership/automobile_dealership/fixtures/workflow_vehicle_sale.json": """{
   "doctype": "Workflow",
   "name": "Vehicle Sale Workflow",
   "document_type": "Vehicle Sale",
@@ -1218,9 +1218,9 @@ def create_roles():
   ]
 }
 """,
-    "auto_dealer/auto_dealer/print_format/vehicle_sale_invoice/vehicle_sale_invoice.html": """<div class="print-format" style="font-family: Arial, sans-serif;">
+    "automobile_dealership/automobile_dealership/print_format/vehicle_sale_invoice/vehicle_sale_invoice.html": """<div class="print-format" style="font-family: Arial, sans-serif;">
   <div class="header" style="text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px;">
-    <h2>{{ frappe.db.get_single_value('Auto Dealer Settings', 'dealership_name') }}</h2>
+    <h2>{{ frappe.db.get_single_value('Automobile Dealership Settings', 'dealership_name') }}</h2>
     <p>Authorised Dealer — {{ doc.make }}</p>
     <p>GSTIN: {{ frappe.db.get_value('Company', doc.company, 'gstin') }}</p>
   </div>
@@ -1285,7 +1285,7 @@ def create_roles():
   </div>
 </div>
 """,
-    "auto_dealer/auto_dealer/tests/test_vehicle.py": """import frappe
+    "automobile_dealership/automobile_dealership/tests/test_vehicle.py": """import frappe
 import unittest
 from frappe.utils import today
 
@@ -1340,15 +1340,15 @@ class TestServiceJobCard(unittest.TestCase):
         loan.calculate_emi()
         self.assertAlmostEqual(loan.emi_amount, 10485, delta=50)
 """,
-    "auto_dealer/setup.py": """from setuptools import setup, find_packages
+    "automobile_dealership/setup.py": """from setuptools import setup, find_packages
 
 with open("requirements.txt") as f:
     install_requires = f.read().strip().split("\\n")
 
-from auto_dealer import __version__ as version
+from automobile_dealership import __version__ as version
 
 setup(
-    name="auto_dealer",
+    name="automobile_dealership",
     version=version,
     description="Automobile Dealership Management",
     author="Your Company",
@@ -1359,10 +1359,10 @@ setup(
     install_requires=install_requires
 )
 """,
-    "auto_dealer/requirements.txt": """ """,
-    "auto_dealer/auto_dealer/__init__.py": """__version__ = '1.0.0'
+    "automobile_dealership/requirements.txt": """ """,
+    "automobile_dealership/automobile_dealership/__init__.py": """__version__ = '1.0.0'
 """,
-    "auto_dealer/__init__.py": """"""
+    "automobile_dealership/__init__.py": """"""
 }
 
 for path, content in files.items():

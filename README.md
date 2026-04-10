@@ -1,6 +1,6 @@
 # Automobile Dealership ERP (ERPNext v15+)
 
-This repository contains the `auto_dealer` custom Frappe app designed to provide an end-to-end dealer management system for medium-sized automobile dealerships.
+This repository contains the `automobile_dealership` custom Frappe app designed to provide an end-to-end dealer management system for medium-sized automobile dealerships.
 
 ## Modules Included
 
@@ -22,7 +22,7 @@ This app is built for **ERPNext v15+**. You must have Frappe framework installed
 bench get-app https://github.com/balaji-001-gif/automobile_dealership.git
 
 # Install the app on an existing site
-bench --site [your-site] install-app auto_dealer
+bench --site [your-site] install-app automobile_dealership
 
 # Migrate existing sites (if needed)
 bench --site [your-site] migrate
@@ -30,7 +30,7 @@ bench --site [your-site] migrate
 
 ## Configuration
 
-Once installed, use the **Auto Dealer Settings** DocType inside ERPNext to configure your API keys for WhatsApp, CarDekho, and Loan portals.
+Once installed, use the **Automobile Dealership Settings** DocType inside ERPNext to configure your API keys for WhatsApp, CarDekho, and Loan portals.
 
 ## License
 

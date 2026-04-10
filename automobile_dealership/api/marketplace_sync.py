@@ -4,7 +4,7 @@ import requests
 def sync_to_cardekho(vehicle_name):
     # Sync vehicle listing to CarDekho partner portal
     vehicle = frappe.get_doc("Vehicle", vehicle_name)
-    settings = frappe.get_single("Auto Dealer Settings")
+    settings = frappe.get_single("Automobile Dealership Settings")
 
     payload = {
         "dealer_id": settings.cardekho_dealer_id,

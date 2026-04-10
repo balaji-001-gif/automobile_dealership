@@ -1,6 +1,6 @@
 <div class="print-format" style="font-family: Arial, sans-serif;">
   <div class="header" style="text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px;">
-    <h2>{{ frappe.db.get_single_value('Auto Dealer Settings', 'dealership_name') }}</h2>
+    <h2>{{ frappe.db.get_single_value('Automobile Dealership Settings', 'dealership_name') }}</h2>
     <p>Authorised Dealer — {{ doc.make }}</p>
     <p>GSTIN: {{ frappe.db.get_value('Company', doc.company, 'gstin') }}</p>
   </div>
