@@ -1,0 +1,29 @@
+{
+  "name": "Service Job Card",
+  "module": "Automobile Dealership",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "fields": [
+    {"fieldname": "vehicle", "label": "Vehicle", "fieldtype": "Link", "options": "Vehicle", "reqd": 1},
+    {"fieldname": "customer", "label": "Customer", "fieldtype": "Link", "options": "Customer"},
+    {"fieldname": "posting_date", "label": "Posting Date", "fieldtype": "Date", "default": "Today"},
+    {"fieldname": "service_advisor", "label": "Service Advisor", "fieldtype": "Link", "options": "User", "reqd": 1},
+    {"fieldname": "technician", "label": "Technician", "fieldtype": "Link", "options": "Employee"},
+    {"fieldname": "status", "label": "Status", "fieldtype": "Select", "options": "Open\nWork in Progress\nCompleted\nCancelled", "default": "Open"},
+    {"fieldname": "job_details_section", "label": "Job Details", "fieldtype": "Section Break"},
+    {"fieldname": "service_type", "label": "Service Type", "fieldtype": "Select", "options": "Periodic Maintenance\nGeneral Repair\nBody Work\nWarranty\nAMC Service"},
+    {"fieldname": "complaints", "label": "Customer Complaints", "fieldtype": "Text Editor"},
+    {"fieldname": "labour_section", "label": "Labour & Parts", "fieldtype": "Section Break"},
+    {"fieldname": "labour_items", "label": "Labour Items", "fieldtype": "Table", "options": "Service Job Labour Item"},
+    {"fieldname": "parts_items", "label": "Parts Items", "fieldtype": "Table", "options": "Service Job Part Item"},
+    {"fieldname": "totals_section", "label": "Totals", "fieldtype": "Section Break"},
+    {"fieldname": "estimated_labour_cost", "label": "Est. Labour", "fieldtype": "Currency", "read_only": 1},
+    {"fieldname": "estimated_parts_cost", "label": "Est. Parts", "fieldtype": "Currency", "read_only": 1},
+    {"fieldname": "estimated_total", "label": "Estimated Total", "fieldtype": "Currency", "read_only": 1},
+    {"fieldname": "final_total", "label": "Final Total", "fieldtype": "Currency"},
+    {"fieldname": "completion_section", "label": "Completion", "fieldtype": "Section Break"},
+    {"fieldname": "start_time", "label": "Start Time", "fieldtype": "Datetime"},
+    {"fieldname": "actual_completion_time", "label": "Completion Time", "fieldtype": "Datetime", "read_only": 1},
+    {"fieldname": "service_invoice", "label": "Sales Invoice", "fieldtype": "Link", "options": "Sales Invoice", "read_only": 1}
+  ]
+}

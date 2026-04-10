@@ -1,0 +1,17 @@
+{
+  "name": "AMC Contract",
+  "module": "Automobile Dealership",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "fields": [
+    {"fieldname": "customer", "label": "Customer", "fieldtype": "Link", "options": "Customer", "reqd": 1},
+    {"fieldname": "vehicle", "label": "Vehicle", "fieldtype": "Link", "options": "Vehicle", "reqd": 1},
+    {"fieldname": "start_date", "label": "Start Date", "fieldtype": "Date", "default": "Today", "reqd": 1},
+    {"fieldname": "duration_years", "label": "Duration (Years)", "fieldtype": "Int", "default": 1},
+    {"fieldname": "end_date", "label": "End Date", "fieldtype": "Date", "read_only": 1},
+    {"fieldname": "contract_amount", "label": "Contract Amount", "fieldtype": "Currency"},
+    {"fieldname": "last_service_date", "label": "Last Service Date", "fieldtype": "Date"},
+    {"fieldname": "next_service_due", "label": "Next Service Due", "fieldtype": "Date"},
+    {"fieldname": "status", "label": "Status", "fieldtype": "Select", "options": "Draft\nActive\nExpired\nCancelled", "default": "Draft"}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Loan Application",
+  "module": "Automobile Dealership",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "fields": [
+    {"fieldname": "customer", "label": "Customer", "fieldtype": "Link", "options": "Customer", "reqd": 1},
+    {"fieldname": "vehicle", "label": "Vehicle", "fieldtype": "Link", "options": "Vehicle", "reqd": 1},
+    {"fieldname": "loan_amount", "label": "Loan Amount", "fieldtype": "Currency", "reqd": 1},
+    {"fieldname": "tenure_months", "label": "Tenure (Months)", "fieldtype": "Int", "reqd": 1},
+    {"fieldname": "interest_rate", "label": "Interest Rate (%)", "fieldtype": "Percent", "reqd": 1},
+    {"fieldname": "emi_amount", "label": "EMI Amount", "fieldtype": "Currency", "read_only": 1},
+    {"fieldname": "total_payable", "label": "Total Payable", "fieldtype": "Currency", "read_only": 1},
+    {"fieldname": "bank", "label": "Bank", "fieldtype": "Link", "options": "Bank"},
+    {"fieldname": "application_status", "label": "Application Status", "fieldtype": "Select", "options": "Draft\nSubmitted to Bank\nApproved\nRejected\nDisbursed", "default": "Draft"},
+    {"fieldname": "bank_reference_number", "label": "Bank Ref No", "fieldtype": "Data", "read_only": 1}
+  ]
+}

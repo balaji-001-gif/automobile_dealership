@@ -1,0 +1,18 @@
+{
+  "name": "Insurance Policy",
+  "module": "Automobile Dealership",
+  "doctype": "DocType",
+  "is_submittable": 1,
+  "fields": [
+    {"fieldname": "vehicle", "label": "Vehicle", "fieldtype": "Link", "options": "Vehicle", "reqd": 1},
+    {"fieldname": "customer", "label": "Customer", "fieldtype": "Link", "options": "Customer", "read_only": 1, "fetch_from": "vehicle.customer"},
+    {"fieldname": "insurer", "label": "Insurer", "fieldtype": "Link", "options": "Supplier", "reqd": 1},
+    {"fieldname": "policy_number", "label": "Policy Number", "fieldtype": "Data", "reqd": 1, "unique": 1},
+    {"fieldname": "policy_start_date", "label": "Start Date", "fieldtype": "Date", "reqd": 1},
+    {"fieldname": "policy_expiry_date", "label": "Expiry Date", "fieldtype": "Date", "reqd": 1},
+    {"fieldname": "premium_amount", "label": "Premium Amount", "fieldtype": "Currency", "reqd": 1},
+    {"fieldname": "idv", "label": "IDV", "fieldtype": "Currency"},
+    {"fieldname": "status", "label": "Status", "fieldtype": "Select", "options": "Draft\nActive\nExpired\nRenewed", "default": "Draft"},
+    {"fieldname": "days_to_renewal", "label": "Days to Renewal", "fieldtype": "Int", "read_only": 1}
+  ]
+}

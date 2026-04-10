@@ -1,0 +1,10 @@
+{
+  "name": "Vehicle Feature Item",
+  "module": "Automobile Dealership",
+  "doctype": "DocType",
+  "istable": 1,
+  "fields": [
+    {"fieldname": "feature", "label": "Feature", "fieldtype": "Data", "reqd": 1},
+    {"fieldname": "amount", "label": "Amount", "fieldtype": "Currency"}
+  ]
+}

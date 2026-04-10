@@ -1,0 +1,14 @@
+{
+  "name": "Loyalty Point Transaction",
+  "module": "Automobile Dealership",
+  "doctype": "DocType",
+  "istable": 1,
+  "fields": [
+    {"fieldname": "transaction_date", "label": "Date", "fieldtype": "Date"},
+    {"fieldname": "points", "label": "Points", "fieldtype": "Int"},
+    {"fieldname": "transaction_type", "label": "Type", "fieldtype": "Select", "options": "Credit\nDebit"},
+    {"fieldname": "reference_docname", "label": "Ref ID", "fieldtype": "Dynamic Link", "options": "reference_doctype"},
+    {"fieldname": "reference_doctype", "label": "Ref Type", "fieldtype": "Link", "options": "DocType"},
+    {"fieldname": "remarks", "label": "Remarks", "fieldtype": "Small Text"}
+  ]
+}
