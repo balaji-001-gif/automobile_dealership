@@ -4,7 +4,19 @@
   "doctype": "DocType",
   "istable": 1,
   "fields": [
-    {"fieldname": "feature", "label": "Feature", "fieldtype": "Data", "reqd": 1},
-    {"fieldname": "amount", "label": "Amount", "fieldtype": "Currency"}
-  ]
+    {
+      "fieldname": "feature",
+      "label": "Feature",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "amount",
+      "label": "Amount",
+      "fieldtype": "Currency"
+    }
+  ],
+  "custom": 0,
+  "is_standard": 1,
+  "track_changes": 1
 }

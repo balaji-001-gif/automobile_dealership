@@ -4,18 +4,79 @@
   "doctype": "DocType",
   "issingle": 1,
   "fields": [
-    {"fieldname": "dealership_name", "label": "Dealership Name", "fieldtype": "Data", "reqd": 1},
-    {"fieldname": "dealer_code", "label": "Dealer Code", "fieldtype": "Data"},
-    {"fieldname": "whatsapp_section", "label": "WhatsApp Integration", "fieldtype": "Section Break"},
-    {"fieldname": "whatsapp_enabled", "label": "Enable WhatsApp Notifications", "fieldtype": "Check"},
-    {"fieldname": "whatsapp_api_url", "label": "API URL", "fieldtype": "Data", "depends_on": "eval:doc.whatsapp_enabled"},
-    {"fieldname": "whatsapp_api_key", "label": "API Key", "fieldtype": "Password", "depends_on": "eval:doc.whatsapp_enabled"},
-    {"fieldname": "marketplace_section", "label": "Marketplace Integration", "fieldtype": "Section Break"},
-    {"fieldname": "cardekho_enabled", "label": "Enable CarDekho Sync", "fieldtype": "Check"},
-    {"fieldname": "cardekho_dealer_id", "label": "Dealer ID", "fieldtype": "Data"},
-    {"fieldname": "finance_section", "label": "Incentive Configuration", "fieldtype": "Section Break"},
-    {"fieldname": "finance_crosssell_bonus", "label": "Finance Bonus Per Sale", "fieldtype": "Currency", "default": 500},
-    {"fieldname": "insurance_crosssell_bonus", "label": "Insurance Bonus Per Sale", "fieldtype": "Currency", "default": 300},
-    {"fieldname": "loyalty_point_value", "label": "Value Per Loyalty Point", "fieldtype": "Currency", "default": 1}
-  ]
+    {
+      "fieldname": "dealership_name",
+      "label": "Dealership Name",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "dealer_code",
+      "label": "Dealer Code",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "whatsapp_section",
+      "label": "WhatsApp Integration",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "whatsapp_enabled",
+      "label": "Enable WhatsApp Notifications",
+      "fieldtype": "Check"
+    },
+    {
+      "fieldname": "whatsapp_api_url",
+      "label": "API URL",
+      "fieldtype": "Data",
+      "depends_on": "eval:doc.whatsapp_enabled"
+    },
+    {
+      "fieldname": "whatsapp_api_key",
+      "label": "API Key",
+      "fieldtype": "Password",
+      "depends_on": "eval:doc.whatsapp_enabled"
+    },
+    {
+      "fieldname": "marketplace_section",
+      "label": "Marketplace Integration",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "cardekho_enabled",
+      "label": "Enable CarDekho Sync",
+      "fieldtype": "Check"
+    },
+    {
+      "fieldname": "cardekho_dealer_id",
+      "label": "Dealer ID",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "finance_section",
+      "label": "Incentive Configuration",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "finance_crosssell_bonus",
+      "label": "Finance Bonus Per Sale",
+      "fieldtype": "Currency",
+      "default": 500
+    },
+    {
+      "fieldname": "insurance_crosssell_bonus",
+      "label": "Insurance Bonus Per Sale",
+      "fieldtype": "Currency",
+      "default": 300
+    },
+    {
+      "fieldname": "loyalty_point_value",
+      "label": "Value Per Loyalty Point",
+      "fieldtype": "Currency",
+      "default": 1
+    }
+  ],
+  "custom": 0,
+  "is_standard": 1,
+  "track_changes": 1
 }

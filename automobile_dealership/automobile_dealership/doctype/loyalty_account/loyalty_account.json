@@ -3,9 +3,34 @@
   "module": "Automobile Dealership",
   "doctype": "DocType",
   "fields": [
-    {"fieldname": "customer", "label": "Customer", "fieldtype": "Link", "options": "Customer", "reqd": 1, "unique": 1},
-    {"fieldname": "total_points", "label": "Total Points", "fieldtype": "Int", "read_only": 1, "default": 0},
-    {"fieldname": "transactions_section", "label": "Transactions", "fieldtype": "Section Break"},
-    {"fieldname": "transactions", "label": "Transactions", "fieldtype": "Table", "options": "Loyalty Point Transaction"}
-  ]
+    {
+      "fieldname": "customer",
+      "label": "Customer",
+      "fieldtype": "Link",
+      "options": "Customer",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "total_points",
+      "label": "Total Points",
+      "fieldtype": "Int",
+      "read_only": 1,
+      "default": 0
+    },
+    {
+      "fieldname": "transactions_section",
+      "label": "Transactions",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "transactions",
+      "label": "Transactions",
+      "fieldtype": "Table",
+      "options": "Loyalty Point Transaction"
+    }
+  ],
+  "custom": 0,
+  "is_standard": 1,
+  "track_changes": 1
 }

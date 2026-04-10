@@ -3,10 +3,38 @@
   "module": "Automobile Dealership",
   "doctype": "DocType",
   "fields": [
-    {"fieldname": "vehicle", "label": "Vehicle", "fieldtype": "Link", "options": "Vehicle", "reqd": 1},
-    {"fieldname": "transaction_date", "label": "Date", "fieldtype": "Date", "default": "Today"},
-    {"fieldname": "location", "label": "Warehouse", "fieldtype": "Link", "options": "Warehouse"},
-    {"fieldname": "transaction_type", "label": "Type", "fieldtype": "Select", "options": "Stock Add\nStock Move\nStock Out\nDemo Issue\nDemo Return"},
-    {"fieldname": "remarks", "label": "Remarks", "fieldtype": "Small Text"}
-  ]
+    {
+      "fieldname": "vehicle",
+      "label": "Vehicle",
+      "fieldtype": "Link",
+      "options": "Vehicle",
+      "reqd": 1
+    },
+    {
+      "fieldname": "transaction_date",
+      "label": "Date",
+      "fieldtype": "Date",
+      "default": "Today"
+    },
+    {
+      "fieldname": "location",
+      "label": "Warehouse",
+      "fieldtype": "Link",
+      "options": "Warehouse"
+    },
+    {
+      "fieldname": "transaction_type",
+      "label": "Type",
+      "fieldtype": "Select",
+      "options": "Stock Add\nStock Move\nStock Out\nDemo Issue\nDemo Return"
+    },
+    {
+      "fieldname": "remarks",
+      "label": "Remarks",
+      "fieldtype": "Small Text"
+    }
+  ],
+  "custom": 0,
+  "is_standard": 1,
+  "track_changes": 1
 }

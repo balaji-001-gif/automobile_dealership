@@ -3,9 +3,33 @@
   "module": "Automobile Dealership",
   "doctype": "DocType",
   "fields": [
-    {"fieldname": "vehicle_type", "label": "Vehicle Type", "fieldtype": "Select", "options": "New\nUsed\nDemo\nCertified Pre-Owned", "reqd": 1},
-    {"fieldname": "min_sales_count", "label": "Min Sales Target", "fieldtype": "Int", "default": 1},
-    {"fieldname": "incentive_amount", "label": "Incentive Per Unit", "fieldtype": "Currency", "reqd": 1},
-    {"fieldname": "is_active", "label": "Active", "fieldtype": "Check", "default": 1}
-  ]
+    {
+      "fieldname": "vehicle_type",
+      "label": "Vehicle Type",
+      "fieldtype": "Select",
+      "options": "New\nUsed\nDemo\nCertified Pre-Owned",
+      "reqd": 1
+    },
+    {
+      "fieldname": "min_sales_count",
+      "label": "Min Sales Target",
+      "fieldtype": "Int",
+      "default": 1
+    },
+    {
+      "fieldname": "incentive_amount",
+      "label": "Incentive Per Unit",
+      "fieldtype": "Currency",
+      "reqd": 1
+    },
+    {
+      "fieldname": "is_active",
+      "label": "Active",
+      "fieldtype": "Check",
+      "default": 1
+    }
+  ],
+  "custom": 0,
+  "is_standard": 1,
+  "track_changes": 1
 }

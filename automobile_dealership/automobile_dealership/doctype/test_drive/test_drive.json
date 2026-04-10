@@ -4,15 +4,73 @@
   "doctype": "DocType",
   "is_submittable": 1,
   "fields": [
-    {"fieldname": "lead", "label": "Lead", "fieldtype": "Link", "options": "Lead", "reqd": 1},
-    {"fieldname": "customer_name", "label": "Customer Name", "fieldtype": "Data", "read_only": 1, "fetch_from": "lead.lead_name"},
-    {"fieldname": "customer_mobile", "label": "Mobile No", "fieldtype": "Data", "read_only": 1, "fetch_from": "lead.mobile_no"},
-    {"fieldname": "vehicle", "label": "Vehicle", "fieldtype": "Link", "options": "Vehicle", "reqd": 1},
-    {"fieldname": "scheduled_date", "label": "Date", "fieldtype": "Date", "reqd": 1},
-    {"fieldname": "scheduled_time", "label": "Time", "fieldtype": "Time", "reqd": 1},
-    {"fieldname": "driving_license_number", "label": "DL Number", "fieldtype": "Data", "reqd": 1},
-    {"fieldname": "sales_consultant", "label": "Sales Consultant", "fieldtype": "Link", "options": "User", "reqd": 1},
-    {"fieldname": "status", "label": "Status", "fieldtype": "Select", "options": "Scheduled\nCompleted\nCancelled", "default": "Scheduled"},
-    {"fieldname": "feedback", "label": "Customer Feedback", "fieldtype": "Small Text"}
-  ]
+    {
+      "fieldname": "lead",
+      "label": "Lead",
+      "fieldtype": "Link",
+      "options": "Lead",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer_name",
+      "label": "Customer Name",
+      "fieldtype": "Data",
+      "read_only": 1,
+      "fetch_from": "lead.lead_name"
+    },
+    {
+      "fieldname": "customer_mobile",
+      "label": "Mobile No",
+      "fieldtype": "Data",
+      "read_only": 1,
+      "fetch_from": "lead.mobile_no"
+    },
+    {
+      "fieldname": "vehicle",
+      "label": "Vehicle",
+      "fieldtype": "Link",
+      "options": "Vehicle",
+      "reqd": 1
+    },
+    {
+      "fieldname": "scheduled_date",
+      "label": "Date",
+      "fieldtype": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "scheduled_time",
+      "label": "Time",
+      "fieldtype": "Time",
+      "reqd": 1
+    },
+    {
+      "fieldname": "driving_license_number",
+      "label": "DL Number",
+      "fieldtype": "Data",
+      "reqd": 1
+    },
+    {
+      "fieldname": "sales_consultant",
+      "label": "Sales Consultant",
+      "fieldtype": "Link",
+      "options": "User",
+      "reqd": 1
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Scheduled\nCompleted\nCancelled",
+      "default": "Scheduled"
+    },
+    {
+      "fieldname": "feedback",
+      "label": "Customer Feedback",
+      "fieldtype": "Small Text"
+    }
+  ],
+  "custom": 0,
+  "is_standard": 1,
+  "track_changes": 1
 }

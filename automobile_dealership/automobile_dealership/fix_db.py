@@ -1,27 +1,38 @@
 import frappe
 
 def run():
-    print("FINAL RESTORE: Correcting DocType paths for deep nesting...")
+    print("Starting database sync and cleanup...")
     
-    # 1. Clear any old Module Def entries that might be conflicting
-    frappe.db.sql("""
-        DELETE FROM `tabModule Def` 
-        WHERE app_name = "automobile_dealership" 
-          AND name != "Automobile Dealership"
-    """)
+    # List of all DocTypes in the app
+    doctypes = [
+        "Vehicle", "Vehicle Sale", "Service Job Card", "Insurance Policy",
+        "AMC Contract", "Loyalty Account", "Loyalty Point Transaction",
+        "Test Drive", "Loan Application", "Vehicle Inventory Log",
+        "Sales Incentive Rule", "Automobile Dealership Settings",
+        "Vehicle Feature Item", "Service Job Labour Item", "Service Job Part Item"
+    ]
     
-    # 2. Force the Module Def to point to the correct app
-    if frappe.db.exists("Module Def", "Automobile Dealership"):
-        frappe.db.set_value("Module Def", "Automobile Dealership", "app_name", "automobile_dealership")
-        print("- Module Def 'Automobile Dealership' verified.")
+    for dt in doctypes:
+        if frappe.db.exists("DocType", dt):
+            print(f"Aligning {dt}...")
+            # Force update module and custom flag
+            frappe.db.set_value("DocType", dt, {
+                "module": "Automobile Dealership",
+                "custom": 0
+            })
+            
+            # Clear compiled metadata
+            frappe.clear_cache(doctype=dt)
     
-    # 3. Nuclear clear of any "Custom" DocTypes that might be remnants
-    # This forces the system to re-read them as Standard from the new paths
-    frappe.db.sql("DELETE FROM `tabDocType` WHERE module = 'Automobile Dealership' AND custom = 1")
+    # Cleanup corrupted workspaces
+    print("Cleaning up Workspace entries...")
+    frappe.db.sql("DELETE FROM `tabWorkspace` WHERE module = 'Automobile Dealership' AND is_standard = 1")
+    frappe.db.sql("DELETE FROM `tabWorkspace` WHERE label = 'Automobile Dealership'")
     
     frappe.db.commit()
     frappe.clear_cache()
-    print("Cleanup complete. Run 'bench migrate' to restore all DocTypes.")
+    
+    print("Database fixation complete. Please run bench migrate now.")
 
 if __name__ == "__main__":
     run()

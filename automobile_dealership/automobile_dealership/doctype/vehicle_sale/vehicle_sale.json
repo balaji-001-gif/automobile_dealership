@@ -4,32 +4,166 @@
   "doctype": "DocType",
   "is_submittable": 1,
   "fields": [
-    {"fieldname": "customer", "label": "Customer", "fieldtype": "Link", "options": "Customer", "reqd": 1},
-    {"fieldname": "customer_name", "label": "Customer Name", "fieldtype": "Data", "read_only": 1},
-    {"fieldname": "customer_mobile", "label": "Mobile No", "fieldtype": "Data", "read_only": 1},
-    {"fieldname": "posting_date", "label": "Posting Date", "fieldtype": "Date", "default": "Today", "reqd": 1},
-    {"fieldname": "vehicle_section", "label": "Vehicle Details", "fieldtype": "Section Break"},
-    {"fieldname": "vehicle", "label": "Vehicle", "fieldtype": "Link", "options": "Vehicle", "reqd": 1},
-    {"fieldname": "make", "label": "Make", "fieldtype": "Data", "read_only": 1, "fetch_from": "vehicle.make"},
-    {"fieldname": "model", "label": "Model", "fieldtype": "Data", "read_only": 1, "fetch_from": "vehicle.model"},
-    {"fieldname": "variant", "label": "Variant", "fieldtype": "Data", "read_only": 1, "fetch_from": "vehicle.variant"},
-    {"fieldname": "vin_number", "label": "VIN Number", "fieldtype": "Data", "read_only": 1, "fetch_from": "vehicle.vin_number"},
-    {"fieldname": "pricing_section", "label": "Pricing", "fieldtype": "Section Break"},
-    {"fieldname": "ex_showroom_price", "label": "Ex-Showroom Price", "fieldtype": "Currency", "reqd": 1},
-    {"fieldname": "registration_charges", "label": "Registration Charges", "fieldtype": "Currency"},
-    {"fieldname": "insurance_premium", "label": "Insurance Premium", "fieldtype": "Currency"},
-    {"fieldname": "accessories_total", "label": "Accessories Total", "fieldtype": "Currency"},
-    {"fieldname": "handling_charges", "label": "Handling Charges", "fieldtype": "Currency"},
-    {"fieldname": "subtotal", "label": "Subtotal", "fieldtype": "Currency", "read_only": 1},
-    {"fieldname": "discount_percent", "label": "Discount (%)", "fieldtype": "Percent"},
-    {"fieldname": "discount_amount", "label": "Discount Amount", "fieldtype": "Currency", "read_only": 1},
-    {"fieldname": "grand_total", "label": "Grand Total", "fieldtype": "Currency", "read_only": 1},
-    {"fieldname": "payment_section", "label": "Payment & Status", "fieldtype": "Section Break"},
-    {"fieldname": "advance_received", "label": "Advance Received", "fieldtype": "Currency"},
-    {"fieldname": "balance_amount", "label": "Balance Amount", "fieldtype": "Currency", "read_only": 1},
-    {"fieldname": "finance_done", "label": "Finance Done", "fieldtype": "Check"},
-    {"fieldname": "insurance_done", "label": "Insurance Done", "fieldtype": "Check"},
-    {"fieldname": "delivery_date", "label": "Delivery Date", "fieldtype": "Date"},
-    {"fieldname": "workflow_state", "label": "Workflow State", "fieldtype": "Link", "options": "Workflow State", "read_only": 1}
-  ]
+    {
+      "fieldname": "customer",
+      "label": "Customer",
+      "fieldtype": "Link",
+      "options": "Customer",
+      "reqd": 1
+    },
+    {
+      "fieldname": "customer_name",
+      "label": "Customer Name",
+      "fieldtype": "Data",
+      "read_only": 1
+    },
+    {
+      "fieldname": "customer_mobile",
+      "label": "Mobile No",
+      "fieldtype": "Data",
+      "read_only": 1
+    },
+    {
+      "fieldname": "posting_date",
+      "label": "Posting Date",
+      "fieldtype": "Date",
+      "default": "Today",
+      "reqd": 1
+    },
+    {
+      "fieldname": "vehicle_section",
+      "label": "Vehicle Details",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "vehicle",
+      "label": "Vehicle",
+      "fieldtype": "Link",
+      "options": "Vehicle",
+      "reqd": 1
+    },
+    {
+      "fieldname": "make",
+      "label": "Make",
+      "fieldtype": "Data",
+      "read_only": 1,
+      "fetch_from": "vehicle.make"
+    },
+    {
+      "fieldname": "model",
+      "label": "Model",
+      "fieldtype": "Data",
+      "read_only": 1,
+      "fetch_from": "vehicle.model"
+    },
+    {
+      "fieldname": "variant",
+      "label": "Variant",
+      "fieldtype": "Data",
+      "read_only": 1,
+      "fetch_from": "vehicle.variant"
+    },
+    {
+      "fieldname": "vin_number",
+      "label": "VIN Number",
+      "fieldtype": "Data",
+      "read_only": 1,
+      "fetch_from": "vehicle.vin_number"
+    },
+    {
+      "fieldname": "pricing_section",
+      "label": "Pricing",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "ex_showroom_price",
+      "label": "Ex-Showroom Price",
+      "fieldtype": "Currency",
+      "reqd": 1
+    },
+    {
+      "fieldname": "registration_charges",
+      "label": "Registration Charges",
+      "fieldtype": "Currency"
+    },
+    {
+      "fieldname": "insurance_premium",
+      "label": "Insurance Premium",
+      "fieldtype": "Currency"
+    },
+    {
+      "fieldname": "accessories_total",
+      "label": "Accessories Total",
+      "fieldtype": "Currency"
+    },
+    {
+      "fieldname": "handling_charges",
+      "label": "Handling Charges",
+      "fieldtype": "Currency"
+    },
+    {
+      "fieldname": "subtotal",
+      "label": "Subtotal",
+      "fieldtype": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "discount_percent",
+      "label": "Discount (%)",
+      "fieldtype": "Percent"
+    },
+    {
+      "fieldname": "discount_amount",
+      "label": "Discount Amount",
+      "fieldtype": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "grand_total",
+      "label": "Grand Total",
+      "fieldtype": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "payment_section",
+      "label": "Payment & Status",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "advance_received",
+      "label": "Advance Received",
+      "fieldtype": "Currency"
+    },
+    {
+      "fieldname": "balance_amount",
+      "label": "Balance Amount",
+      "fieldtype": "Currency",
+      "read_only": 1
+    },
+    {
+      "fieldname": "finance_done",
+      "label": "Finance Done",
+      "fieldtype": "Check"
+    },
+    {
+      "fieldname": "insurance_done",
+      "label": "Insurance Done",
+      "fieldtype": "Check"
+    },
+    {
+      "fieldname": "delivery_date",
+      "label": "Delivery Date",
+      "fieldtype": "Date"
+    },
+    {
+      "fieldname": "workflow_state",
+      "label": "Workflow State",
+      "fieldtype": "Link",
+      "options": "Workflow State",
+      "read_only": 1
+    }
+  ],
+  "custom": 0,
+  "is_standard": 1,
+  "track_changes": 1
 }
