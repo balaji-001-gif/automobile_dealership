@@ -1,7 +1,7 @@
 import frappe
 from frappe.model.document import Document
 
-class AutoDealerSettings(Document):
+class AutomobileDealershipSettings(Document):
     def validate(self):
         self.validate_whatsapp_config()
 
