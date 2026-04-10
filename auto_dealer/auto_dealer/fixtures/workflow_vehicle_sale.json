@@ -1,0 +1,24 @@
+{
+  "doctype": "Workflow",
+  "name": "Vehicle Sale Workflow",
+  "document_type": "Vehicle Sale",
+  "workflow_name": "Vehicle Sale Workflow",
+  "is_active": 1,
+  "states": [
+    {"state": "Draft", "doc_status": "0", "allow_edit": "Sales Consultant"},
+    {"state": "Verified", "doc_status": "0", "allow_edit": "DMS Manager"},
+    {"state": "Finance Approved", "doc_status": "0", "allow_edit": "Finance Executive"},
+    {"state": "Delivery Scheduled", "doc_status": "0", "allow_edit": "DMS Manager"},
+    {"state": "Delivered", "doc_status": "1", "allow_edit": "Dealer Admin"}
+  ],
+  "transitions": [
+    {"state": "Draft", "action": "Verify", "next_state": "Verified",
+     "allowed": "DMS Manager", "condition": "doc.grand_total > 0"},
+    {"state": "Verified", "action": "Approve Finance", "next_state": "Finance Approved",
+     "allowed": "Finance Executive"},
+    {"state": "Finance Approved", "action": "Schedule Delivery", "next_state": "Delivery Scheduled",
+     "allowed": "DMS Manager"},
+    {"state": "Delivery Scheduled", "action": "Mark Delivered", "next_state": "Delivered",
+     "allowed": "Dealer Admin"}
+  ]
+}
