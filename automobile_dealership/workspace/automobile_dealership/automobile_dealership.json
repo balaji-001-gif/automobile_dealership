@@ -1,5 +1,6 @@
 {
   "name": "Automobile Dealership",
+  "doctype": "Workspace",
   "label": "Automobile Dealership",
   "module": "Automobile Dealership",
   "category": "Modules",
