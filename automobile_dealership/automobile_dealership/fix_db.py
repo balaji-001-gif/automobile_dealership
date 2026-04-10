@@ -1,7 +1,7 @@
 import frappe
 
 def run():
-    print("Starting hardened database sync and cleanup...")
+    print("Starting HARDENED database sync (Version 3)...")
     
     # List of all DocTypes in the app
     doctypes = [
