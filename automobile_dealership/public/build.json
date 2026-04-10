@@ -1,8 +1,8 @@
 {
-  "automobile_dealership/js/automobile_dealership.js": [
-    "public/js/automobile_dealership.js"
+  "automobile_dealership/js/automobile_dealership.automobile_dealership.js": [
+    "public/js/automobile_dealership.automobile_dealership.js"
   ],
-  "automobile_dealership/css/automobile_dealership.css": [
-    "public/css/automobile_dealership.css"
+  "automobile_dealership/css/automobile_dealership.automobile_dealership.css": [
+    "public/css/automobile_dealership.automobile_dealership.css"
   ]
 }

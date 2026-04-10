@@ -22,5 +22,5 @@ class InsurancePolicy(Document):
 
     @frappe.whitelist()
     def get_renewal_quote(self):
-        from automobile_dealership.api.insurance import get_renewal_quote
+        from automobile_dealership.automobile_dealership.api.insurance import get_renewal_quote
         return get_renewal_quote(self.policy_number, self.insurer)

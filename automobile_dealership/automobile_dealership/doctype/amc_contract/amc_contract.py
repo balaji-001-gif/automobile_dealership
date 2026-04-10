@@ -35,7 +35,7 @@ def send_amc_renewal_reminders():
         fields=["name", "customer", "vehicle", "end_date", "customer_mobile"],
     )
     for contract in due_contracts:
-        from automobile_dealership.api.whatsapp import send_message
+        from automobile_dealership.automobile_dealership.api.whatsapp import send_message
         if contract.customer_mobile:
             send_message(
                 phone=contract.customer_mobile,

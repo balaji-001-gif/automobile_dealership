@@ -15,23 +15,23 @@ required_apps = ["frappe", "erpnext"]
 
 # DocType overrides
 override_doctype_class = {
-    "Sales Order": "automobile_dealership.overrides.sales_order.CustomSalesOrder",
-    "Customer": "automobile_dealership.overrides.customer.CustomCustomer",
+    "Sales Order": "automobile_dealership.automobile_dealership.overrides.sales_order.CustomSalesOrder",
+    "Customer": "automobile_dealership.automobile_dealership.overrides.customer.CustomCustomer",
 }
 
 # Scheduled tasks
 scheduler_events = {
     "daily": [
-        "automobile_dealership.tasks.send_service_reminders",
-        "automobile_dealership.tasks.check_insurance_renewals",
-        "automobile_dealership.tasks.check_amc_renewals",
-        "automobile_dealership.tasks.oem_target_sync",
+        "automobile_dealership.automobile_dealership.tasks.send_service_reminders",
+        "automobile_dealership.automobile_dealership.tasks.check_insurance_renewals",
+        "automobile_dealership.automobile_dealership.tasks.check_amc_renewals",
+        "automobile_dealership.automobile_dealership.tasks.oem_target_sync",
     ],
     "weekly": [
-        "automobile_dealership.tasks.slow_moving_inventory_alert",
+        "automobile_dealership.automobile_dealership.tasks.slow_moving_inventory_alert",
     ],
     "monthly": [
-        "automobile_dealership.tasks.generate_oem_monthly_report",
+        "automobile_dealership.automobile_dealership.tasks.generate_oem_monthly_report",
     ],
 }
 
@@ -39,17 +39,17 @@ scheduler_events = {
 doc_events = {
     "Vehicle Sale": {
         "on_submit": [
-            "automobile_dealership.events.vehicle_sale.on_submit",
-            "automobile_dealership.events.vehicle_sale.trigger_whatsapp_confirmation",
+            "automobile_dealership.automobile_dealership.events.vehicle_sale.on_submit",
+            "automobile_dealership.automobile_dealership.events.vehicle_sale.trigger_whatsapp_confirmation",
         ],
-        "on_cancel": "automobile_dealership.events.vehicle_sale.on_cancel",
+        "on_cancel": "automobile_dealership.automobile_dealership.events.vehicle_sale.on_cancel",
     },
     "Service Job Card": {
-        "on_submit": "automobile_dealership.events.service_job_card.on_submit",
-        "on_update": "automobile_dealership.events.service_job_card.update_job_status",
+        "on_submit": "automobile_dealership.automobile_dealership.events.service_job_card.on_submit",
+        "on_update": "automobile_dealership.automobile_dealership.events.service_job_card.update_job_status",
     },
     "Customer": {
-        "after_insert": "automobile_dealership.events.customer.create_crm_profile",
+        "after_insert": "automobile_dealership.automobile_dealership.events.customer.create_crm_profile",
     },
 }
 
@@ -377,7 +377,7 @@ class CustomLead(Lead):
 
     def send_whatsapp_acknowledgement(self):
         if self.mobile_no:
-            from automobile_dealership.api.whatsapp import send_message
+            from automobile_dealership.automobile_dealership.api.whatsapp import send_message
             send_message(
                 phone=self.mobile_no,
                 template="lead_acknowledgement",
@@ -431,7 +431,7 @@ class TestDrive(Document):
         frappe.db.set_value("Vehicle", self.vehicle, "status", "Demo")
 
     def send_confirmation(self):
-        from automobile_dealership.api.whatsapp import send_message
+        from automobile_dealership.automobile_dealership.api.whatsapp import send_message
         if self.customer_mobile:
             send_message(
                 phone=self.customer_mobile,
@@ -485,7 +485,7 @@ class LoanApplication(Document):
 
     def submit_to_bank_portal(self):
         # Integrate with bank DSA API
-        from automobile_dealership.api.loan_dsa import submit_application
+        from automobile_dealership.automobile_dealership.api.loan_dsa import submit_application
         result = submit_application(self)
         if result.get("status") == "success":
             self.db_set("bank_reference_number", result.get("ref_no"))
@@ -535,7 +535,7 @@ class InsurancePolicy(Document):
 
     @frappe.whitelist()
     def get_renewal_quote(self):
-        from automobile_dealership.api.insurance import get_renewal_quote
+        from automobile_dealership.automobile_dealership.api.insurance import get_renewal_quote
         return get_renewal_quote(self.policy_number, self.insurer)
 """,
     "automobile_dealership/automobile_dealership/setup/billing_setup.py": """import frappe
@@ -641,7 +641,7 @@ class ServiceJobCard(Document):
                 mr.insert(ignore_permissions=True)
 
     def notify_customer_job_started(self):
-        from automobile_dealership.api.whatsapp import send_message
+        from automobile_dealership.automobile_dealership.api.whatsapp import send_message
         if self.customer_mobile:
             send_message(
                 phone=self.customer_mobile,
@@ -694,7 +694,7 @@ class ServiceJobCard(Document):
         return si.name
 
     def notify_customer_ready(self):
-        from automobile_dealership.api.whatsapp import send_message
+        from automobile_dealership.automobile_dealership.api.whatsapp import send_message
         if self.customer_mobile:
             send_message(
                 phone=self.customer_mobile,
@@ -744,7 +744,7 @@ def send_amc_renewal_reminders():
         fields=["name", "customer", "vehicle", "end_date", "customer_mobile"],
     )
     for contract in due_contracts:
-        from automobile_dealership.api.whatsapp import send_message
+        from automobile_dealership.automobile_dealership.api.whatsapp import send_message
         if contract.customer_mobile:
             send_message(
                 phone=contract.customer_mobile,

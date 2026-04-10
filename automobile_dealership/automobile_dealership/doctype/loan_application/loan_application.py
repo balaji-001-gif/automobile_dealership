@@ -23,7 +23,7 @@ class LoanApplication(Document):
 
     def submit_to_bank_portal(self):
         # Integrate with bank DSA API
-        from automobile_dealership.api.loan_dsa import submit_application
+        from automobile_dealership.automobile_dealership.api.loan_dsa import submit_application
         result = submit_application(self)
         if result.get("status") == "success":
             self.db_set("bank_reference_number", result.get("ref_no"))

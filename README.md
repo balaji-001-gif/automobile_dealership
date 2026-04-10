@@ -19,7 +19,7 @@ This app is built for **ERPNext v15+**. You must have Frappe framework installed
 
 ```bash
 # Fetch the app onto your Bench
-bench get-app https://github.com/balaji-001-gif/automobile_dealership.git
+bench get-app https://github.com/balaji-001-gif/automobile_dealership.automobile_dealership.git
 
 # Install the app on an existing site
 bench --site [your-site] install-app automobile_dealership

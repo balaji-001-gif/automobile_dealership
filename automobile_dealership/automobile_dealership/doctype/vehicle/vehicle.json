@@ -1,6 +1,6 @@
 {
   "name": "Vehicle",
-  "module": "Automobile Dealership",
+  "module": "automobile_dealership",
   "doctype": "DocType",
   "is_submittable": 0,
   "track_changes": 1,

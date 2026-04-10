@@ -39,7 +39,7 @@ class TestDrive(Document):
         frappe.db.set_value("Vehicle", self.vehicle, "status", "Demo")
 
     def send_confirmation(self):
-        from automobile_dealership.api.whatsapp import send_message
+        from automobile_dealership.automobile_dealership.api.whatsapp import send_message
         if self.customer_mobile:
             send_message(
                 phone=self.customer_mobile,

@@ -61,7 +61,7 @@ class ServiceJobCard(Document):
                 mr.insert(ignore_permissions=True)
 
     def notify_customer_job_started(self):
-        from automobile_dealership.api.whatsapp import send_message
+        from automobile_dealership.automobile_dealership.api.whatsapp import send_message
         if self.customer_mobile:
             send_message(
                 phone=self.customer_mobile,
@@ -114,7 +114,7 @@ class ServiceJobCard(Document):
         return si.name
 
     def notify_customer_ready(self):
-        from automobile_dealership.api.whatsapp import send_message
+        from automobile_dealership.automobile_dealership.api.whatsapp import send_message
         if self.customer_mobile:
             send_message(
                 phone=self.customer_mobile,
