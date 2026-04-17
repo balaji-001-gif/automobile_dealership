@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[]",
+ "content": "[{\"id\": \"cb-sales\", \"type\": \"card\", \"data\": {\"card_name\": \"Sales & CRM\", \"col\": 12}}, {\"id\": \"cb-inventory\", \"type\": \"card\", \"data\": {\"card_name\": \"Vehicle Inventory\", \"col\": 12}}, {\"id\": \"cb-finance\", \"type\": \"card\", \"data\": {\"card_name\": \"Finance & Insurance\", \"col\": 12}}, {\"id\": \"cb-workshop\", \"type\": \"card\", \"data\": {\"card_name\": \"Service Workshop\", \"col\": 12}}, {\"id\": \"cb-loyalty\", \"type\": \"card\", \"data\": {\"card_name\": \"Loyalty & Marketing\", \"col\": 12}}, {\"id\": \"cb-config\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 12}}]",
  "creation": "2024-01-01 00:00:00.000000",
  "docstatus": 0,
  "doctype": "Workspace",
