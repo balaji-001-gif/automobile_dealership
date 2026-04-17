@@ -66,7 +66,7 @@ fixtures = [
     {"dt": "Custom Field"},
     {"dt": "Property Setter"},
     {"dt": "Module Def", "filters": [["name", "=", "Automobile Dealership"]]},
-    {"dt": "Workspace", "filters": [["name", "=", "Automobile Dealership"]]},
+    {"doctype": "Workspace", "filters": [["module", "=", "Automobile Dealership"]]},
 ]
 
 # Website context
