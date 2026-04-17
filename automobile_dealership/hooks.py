@@ -5,11 +5,16 @@ app_description = "Automobile Dealership Management"
 app_version = "1.0.0"
 app_license = "MIT"
 
+# Optional but recommended for better visibility in app switcher
+app_icon = "fa fa-car"
+app_color = "#1E88E5"
+
 # Required apps
 required_apps = ["frappe", "erpnext"]
 
-# DocType overrides
-override_doctype_class = {
+# DocType overrides / extensions
+# Use extend_doctype_class (safer in newer Frappe versions)
+extend_doctype_class = {
     "Sales Order": "automobile_dealership.automobile_dealership.overrides.sales_order.CustomSalesOrder",
     "Customer": "automobile_dealership.automobile_dealership.overrides.customer.CustomCustomer",
 }
@@ -48,7 +53,7 @@ doc_events = {
     },
 }
 
-# Fixtures (data to export/import with app)
+# Fixtures (data exported with the app)
 fixtures = [
     {"dt": "Role", "filters": [["name", "in", [
         "Dealer Admin", "Sales Consultant", "Service Advisor",
@@ -61,6 +66,7 @@ fixtures = [
     {"dt": "Custom Field"},
     {"dt": "Property Setter"},
     {"dt": "Module Def", "filters": [["name", "=", "Automobile Dealership"]]},
+    {"dt": "Workspace", "filters": [["name", "=", "Automobile Dealership"]]},
 ]
 
 # Website context
