@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\": \"cb-sales\", \"type\": \"card\", \"data\": {\"card_name\": \"Sales & CRM\", \"col\": 12}}, {\"id\": \"cb-inventory\", \"type\": \"card\", \"data\": {\"card_name\": \"Vehicle Inventory\", \"col\": 12}}, {\"id\": \"cb-finance\", \"type\": \"card\", \"data\": {\"card_name\": \"Finance & Insurance\", \"col\": 12}}, {\"id\": \"cb-workshop\", \"type\": \"card\", \"data\": {\"card_name\": \"Service Workshop\", \"col\": 12}}, {\"id\": \"cb-loyalty\", \"type\": \"card\", \"data\": {\"card_name\": \"Loyalty & Marketing\", \"col\": 12}}, {\"id\": \"cb-config\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 12}}]",
+ "content": "[]",
  "creation": "2024-01-01 00:00:00.000000",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
@@ -207,7 +207,7 @@
    "type": "Link"
   }
  ],
- "modified": "2024-01-01 00:00:00.000000",
+ "modified": "2026-04-17 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Automobile Dealership",
  "name": "Automobile Dealership",
