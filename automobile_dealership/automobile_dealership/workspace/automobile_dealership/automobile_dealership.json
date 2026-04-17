@@ -1,1 +1,253 @@
-
+{
+ "charts": [],
+ "content": "[{\"id\": \"cb-sales\", \"type\": \"card\", \"data\": {\"card_name\": \"Sales & CRM\", \"col\": 12}}, {\"id\": \"cb-inventory\", \"type\": \"card\", \"data\": {\"card_name\": \"Vehicle Inventory\", \"col\": 12}}, {\"id\": \"cb-finance\", \"type\": \"card\", \"data\": {\"card_name\": \"Finance & Insurance\", \"col\": 12}}, {\"id\": \"cb-workshop\", \"type\": \"card\", \"data\": {\"card_name\": \"Service Workshop\", \"col\": 12}}, {\"id\": \"cb-loyalty\", \"type\": \"card\", \"data\": {\"card_name\": \"Loyalty & Marketing\", \"col\": 12}}, {\"id\": \"cb-config\", \"type\": \"card\", \"data\": {\"card_name\": \"Configuration\", \"col\": 12}}]",
+ "creation": "2024-01-01 00:00:00.000000",
+ "developer_mode_only": 0,
+ "disable_user_customization": 0,
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "automobile",
+ "idx": 0,
+ "is_default": 0,
+ "is_hidden": 0,
+ "label": "Automobile Dealership",
+ "links": [
+  {
+   "hidden": 0,
+   "idx": 1,
+   "is_query_report": 0,
+   "label": "Sales & CRM",
+   "link_count": 0,
+   "onboard": 1,
+   "title": "Sales & CRM",
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 2,
+   "is_query_report": 0,
+   "label": "Vehicle Sale",
+   "link_count": 0,
+   "link_to": "Vehicle Sale",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 3,
+   "is_query_report": 0,
+   "label": "Test Drive",
+   "link_count": 0,
+   "link_to": "Test Drive",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 4,
+   "is_query_report": 0,
+   "label": "Vehicle Inventory",
+   "link_count": 0,
+   "onboard": 1,
+   "title": "Vehicle Inventory",
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 5,
+   "is_query_report": 0,
+   "label": "Vehicle",
+   "link_count": 0,
+   "link_to": "Vehicle",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 6,
+   "is_query_report": 0,
+   "label": "Vehicle Inventory Log",
+   "link_count": 0,
+   "link_to": "Vehicle Inventory Log",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 7,
+   "is_query_report": 0,
+   "label": "Finance & Insurance",
+   "link_count": 0,
+   "onboard": 1,
+   "title": "Finance & Insurance",
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 8,
+   "is_query_report": 0,
+   "label": "Loan Application",
+   "link_count": 0,
+   "link_to": "Loan Application",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 9,
+   "is_query_report": 0,
+   "label": "Insurance Policy",
+   "link_count": 0,
+   "link_to": "Insurance Policy",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 10,
+   "is_query_report": 0,
+   "label": "Service Workshop",
+   "link_count": 0,
+   "onboard": 1,
+   "title": "Service Workshop",
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 11,
+   "is_query_report": 0,
+   "label": "Service Job Card",
+   "link_count": 0,
+   "link_to": "Service Job Card",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 12,
+   "is_query_report": 0,
+   "label": "AMC Contract",
+   "link_count": 0,
+   "link_to": "AMC Contract",
+   "link_type": "DocType",
+   "onboard": 1,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 13,
+   "is_query_report": 0,
+   "label": "Loyalty & Marketing",
+   "link_count": 0,
+   "onboard": 0,
+   "title": "Loyalty & Marketing",
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 14,
+   "is_query_report": 0,
+   "label": "Loyalty Account",
+   "link_count": 0,
+   "link_to": "Loyalty Account",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 15,
+   "is_query_report": 0,
+   "label": "Sales Incentive Rule",
+   "link_count": 0,
+   "link_to": "Sales Incentive Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "idx": 16,
+   "is_query_report": 0,
+   "label": "Configuration",
+   "link_count": 0,
+   "onboard": 0,
+   "title": "Configuration",
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "idx": 17,
+   "is_query_report": 0,
+   "label": "Dealership Settings",
+   "link_count": 0,
+   "link_to": "Automobile Dealership Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Automobile Dealership",
+ "name": "Automobile Dealership",
+ "owner": "Administrator",
+ "public": 1,
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Blue",
+   "format": "{} Available",
+   "label": "Available Vehicles",
+   "link_to": "Vehicle",
+   "stats_filter": "{\"status\": \"Available\"}",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "format": "{} MTD",
+   "label": "Vehicle Sales",
+   "link_to": "Vehicle Sale",
+   "stats_filter": "{\"docstatus\": 1}",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "format": "{} Open",
+   "label": "Service Jobs",
+   "link_to": "Service Job Card",
+   "stats_filter": "{\"status\": [\"in\", [\"Open\", \"Work in Progress\"]]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Purple",
+   "label": "Pending Loans",
+   "link_to": "Loan Application",
+   "stats_filter": "{\"status\": \"Submitted to Bank\"}",
+   "type": "DocType"
+  }
+ ],
+ "title": "Automobile Dealership"
+}
